@@ -55,14 +55,14 @@ public class EnumBindingSourceExtension : MarkupExtension
         }
 
         var enumType = Nullable.GetUnderlyingType(_enumType) ?? _enumType;
-        var enumValues= Enum.GetValues(enumType);
+        var enumValues = Enum.GetValues(enumType);
         if (enumType == _enumType)
         {
             return enumValues;
         }
 
         var tempArray = Array.CreateInstance(enumType, enumValues.Length + 1);
-        enumValues.CopyTo(tempArray,1);
+        enumValues.CopyTo(tempArray, 1);
         return tempArray;
     }
 
