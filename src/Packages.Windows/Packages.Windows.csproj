@@ -21,6 +21,7 @@
 	<ItemGroup>
 		<Folder Include="Extensions\" />
 		<Folder Include="MarkupExtensions\" />
+		<Folder Include="TypeConverters\" />
 	</ItemGroup>
 
 </Project>
