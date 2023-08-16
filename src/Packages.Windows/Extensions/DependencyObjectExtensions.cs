@@ -61,11 +61,19 @@ namespace System.Windows
             for (var i = 0; i < num; i++)
             {
                 var item = VisualTreeHelper.GetChild(d, i);
-                var child = item as T ?? item.GetVisualChild<T>();
-                if (child != null)
+
+                if (!(item is T child))
                 {
-                    break;
+                    child = item.GetVisualChild<T>();
+                    if (child == null)
+                    {
+                        continue;
+                    }
+
+                    return child;
                 }
+
+                return child;
             }
 
             return default;
