@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
-		<Nullable>enable</Nullable>
+		<Nullable>disable</Nullable>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageId>baozhangchi.$(AssemblyName)</PackageId>
@@ -16,7 +16,13 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<Version>0.0.0.1</Version>
+		<ImplicitUsings>disable</ImplicitUsings>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Include="..\Packages.Windows\Extensions\EnumerableExtensions.cs" Link="Extensions\EnumerableExtensions.cs" />
+	  <Compile Include="..\Packages.Windows\Extensions\EnumExtensions.cs" Link="Extensions\EnumExtensions.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="Extensions\" />

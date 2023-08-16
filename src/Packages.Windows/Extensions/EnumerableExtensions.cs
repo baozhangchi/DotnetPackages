@@ -33,7 +33,7 @@ namespace System.Linq
 
             #region Methods
 
-            public bool Equals(T? x, T? y)
+            public bool Equals(T x, T y)
             {
                 if (x == null && y == null)
                 {
@@ -83,7 +83,7 @@ namespace System.Linq
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <param name="defaultValue"></param>
-        public static void GetOrAddValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, out TValue? value, TValue defaultValue)
+        public static void GetOrAddValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, out TValue value, TValue defaultValue)
         {
             if (!dictionary.TryGetValue(key, out value))
             {

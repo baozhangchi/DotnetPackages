@@ -12,7 +12,7 @@ namespace Packages.Windows.MarkupExtensions
     {
         #region Fields
 
-        private Type? _enumType;
+        private Type _enumType;
 
         #endregion
 
@@ -22,7 +22,7 @@ namespace Packages.Windows.MarkupExtensions
         ///     枚举类型
         /// </summary>
         /// <exception cref="ArgumentException"></exception>
-        public Type? EnumType
+        public Type EnumType
         {
             get => _enumType;
             set

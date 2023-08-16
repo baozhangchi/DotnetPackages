@@ -1,9 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
+		<TargetFrameworks>net452;net5.0-windows;net6.0-windows;net7.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
-		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageId>baozhangchi.$(AssemblyName)</PackageId>
@@ -16,13 +15,13 @@
 		<RepositoryType>git</RepositoryType>
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
-		<Version>0.0.0.1</Version>
+		<Version>0.0.0.2</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Extensions\" />
 		<Folder Include="MarkupExtensions\" />
 		<Folder Include="TypeConverters\" />
+
 	</ItemGroup>
 
 </Project>

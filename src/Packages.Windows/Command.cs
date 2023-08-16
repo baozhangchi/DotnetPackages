@@ -7,8 +7,8 @@ namespace System.Windows.Input
     {
         #region Fields
 
-        private readonly Func<object?, bool> _canExecute;
-        private readonly Action<object?> _execute;
+        private readonly Func<object, bool> _canExecute;
+        private readonly Action<object> _execute;
 
         #endregion
 
@@ -19,7 +19,7 @@ namespace System.Windows.Input
         /// <param name="execute"></param>
         /// <param name="canExecute"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        protected CommandBase(Action<object?> execute, Func<object?, bool> canExecute)
+        protected CommandBase(Action<object> execute, Func<object, bool> canExecute)
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute ?? throw new ArgumentNullException(nameof(canExecute));
@@ -38,13 +38,13 @@ namespace System.Windows.Input
         }
 
         /// <inheritdoc />
-        public bool CanExecute(object? parameter)
+        public bool CanExecute(object parameter)
         {
             return _canExecute(parameter);
         }
 
         /// <inheritdoc />
-        public void Execute(object? parameter)
+        public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
@@ -53,7 +53,7 @@ namespace System.Windows.Input
         }
 
         /// <inheritdoc />
-        public event EventHandler? CanExecuteChanged;
+        public event EventHandler CanExecuteChanged;
 
         #endregion
     }
@@ -98,7 +98,7 @@ namespace System.Windows.Input
         /// </summary>
         /// <param name="execute"></param>
         /// <param name="canExecute"></param>
-        public Command(Action<T?> execute, Func<T?, bool> canExecute) : base(o => execute(o == null ? default : (T)o), o => canExecute(o == null ? default : (T)o))
+        public Command(Action<T> execute, Func<T, bool> canExecute) : base(o => execute(o == null ? default : (T)o), o => canExecute(o == null ? default : (T)o))
         {
         }
 
@@ -106,7 +106,7 @@ namespace System.Windows.Input
         ///     初始化Command
         /// </summary>
         /// <param name="execute"></param>
-        public Command(Action<T?> execute) : this(execute, _ => true)
+        public Command(Action<T> execute) : this(execute, _ => true)
         {
         }
 

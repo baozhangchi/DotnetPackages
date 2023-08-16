@@ -21,7 +21,7 @@ namespace System.Windows
         /// <param name="d"></param>
         /// <param name="level">回溯层级</param>
         /// <returns></returns>
-        public static T? GetParentUtil<T>(this DependencyObject d, int level) where T : DependencyObject
+        public static T GetParentUtil<T>(this DependencyObject d, int level) where T : DependencyObject
         {
             var item = VisualTreeHelper.GetParent(d);
             if (item == null)
@@ -44,7 +44,7 @@ namespace System.Windows
         /// <typeparam name="T"></typeparam>
         /// <param name="d"></param>
         /// <returns></returns>
-        public static T? GetParentUtil<T>(this DependencyObject d) where T : DependencyObject
+        public static T GetParentUtil<T>(this DependencyObject d) where T : DependencyObject
         {
             return d.GetParentUtil<T>(0);
         }
@@ -55,7 +55,7 @@ namespace System.Windows
         /// <typeparam name="T"></typeparam>
         /// <param name="d"></param>
         /// <returns></returns>
-        public static T? GetVisualChild<T>(this DependencyObject d) where T : DependencyObject
+        public static T GetVisualChild<T>(this DependencyObject d) where T : DependencyObject
         {
             var num = VisualTreeHelper.GetChildrenCount(d);
             for (var i = 0; i < num; i++)

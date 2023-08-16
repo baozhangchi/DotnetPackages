@@ -15,7 +15,7 @@ namespace System.Collections
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
-    public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyCollectionChanged, INotifyPropertyChanged where TKey : notnull
+    public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyCollectionChanged, INotifyPropertyChanged
     {
         #region Fields
 
@@ -26,7 +26,7 @@ namespace System.Collections
         #region Methods
 
         /// <inheritdoc />
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
 
@@ -129,18 +129,9 @@ namespace System.Collections
         }
 
         /// <inheritdoc />
-#pragma warning disable CS8767
-        public bool TryGetValue(TKey key, out TValue? value)
-#pragma warning restore CS8767
+        public bool TryGetValue(TKey key, out TValue value)
         {
-            value = default;
-            var result = _dictionary.TryGetValue(key, out var item);
-            if (item != null)
-            {
-                value = item;
-            }
-
-            return result;
+            return _dictionary.TryGetValue(key, out value);
         }
 
         /// <inheritdoc />
@@ -211,6 +202,6 @@ namespace System.Collections
 
         #endregion
 
-        public event NotifyCollectionChangedEventHandler? CollectionChanged;
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
     }
 }
