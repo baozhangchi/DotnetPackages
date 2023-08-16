@@ -1,4 +1,11 @@
-﻿namespace System.Linq
+﻿#region
+
+using System.Collections.Generic;
+
+#endregion
+
+// ReSharper disable once CheckNamespace
+namespace System.Linq
 {
     /// <summary>
     ///     集合扩展方法

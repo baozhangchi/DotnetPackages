@@ -5,6 +5,7 @@ using System.Reflection;
 
 #endregion
 
+// ReSharper disable once CheckNamespace
 namespace System
 {
     /// <summary>

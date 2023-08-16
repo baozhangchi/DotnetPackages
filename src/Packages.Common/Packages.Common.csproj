@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0</TargetFrameworks>
-		<ImplicitUsings>enable</ImplicitUsings>
+		<TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -10,6 +9,8 @@
 		<Title>$(AssemblyName)</Title>
 		<Authors>baozhangchi</Authors>
 		<PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+		<Copyright>Copyright © 2023 baozhangchi, All Rights Reserved.</Copyright>
+		<Description>本Nuget包提供了一些常用的类库</Description>
 		<RepositoryUrl>https://github.com/baozhangchi/DotnetPackages</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<FileVersion>$(Version)</FileVersion>

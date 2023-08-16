@@ -6,40 +6,42 @@ using System.Reflection;
 
 #endregion
 
-namespace Packages.Windows.TypeConverters;
-
-/// <inheritdoc />
-public class EnumDescriptionTypeConverter : EnumConverter
+// ReSharper disable once CheckNamespace
+namespace System
 {
-    #region Constructors
-
     /// <inheritdoc />
-    public EnumDescriptionTypeConverter(Type type) : base(type)
+    public class EnumDescriptionTypeConverter : EnumConverter
     {
-    }
+        #region Constructors
 
-    #endregion
-
-    #region Methods
-
-    /// <inheritdoc />
-    public override object? ConvertTo(ITypeDescriptorContext? context, CultureInfo? culture, object? value, Type destinationType)
-    {
-        if (destinationType == typeof(string))
+        /// <inheritdoc />
+        public EnumDescriptionTypeConverter(Type type) : base(type)
         {
-            if (value != null)
-            {
-                var field = value.GetType().GetField(value.ToString()!);
-                var attribute = field!.GetCustomAttribute<DescriptionAttribute>();
-                if (attribute != null)
-                {
-                    return attribute.Description;
-                }
-            }
         }
 
-        return base.ConvertTo(context, culture, value, destinationType);
-    }
+        #endregion
 
-    #endregion
+        #region Methods
+
+        /// <inheritdoc />
+        public override object? ConvertTo(ITypeDescriptorContext? context, CultureInfo? culture, object? value, Type destinationType)
+        {
+            if (destinationType == typeof(string))
+            {
+                if (value != null)
+                {
+                    var field = value.GetType().GetField(value.ToString()!);
+                    var attribute = field!.GetCustomAttribute<DescriptionAttribute>();
+                    if (attribute != null)
+                    {
+                        return attribute.Description;
+                    }
+                }
+            }
+
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+
+        #endregion
+    }
 }
