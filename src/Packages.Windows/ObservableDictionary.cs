@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace System.Collections;
 
 /// <summary>
-/// 支持通知字典
+///     支持通知字典
 /// </summary>
 /// <typeparam name="TKey"></typeparam>
 /// <typeparam name="TValue"></typeparam>
