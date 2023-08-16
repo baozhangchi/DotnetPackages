@@ -1,6 +1,4 @@
-﻿#region
-
-#endregion
+﻿// ReSharper disable once CheckNamespace
 
 namespace System.Windows.Input;
 
@@ -60,14 +58,26 @@ public abstract class CommandBase : ICommand
     #endregion
 }
 
+/// <summary>
+///     ICommand不带参数实现
+/// </summary>
 public class Command : CommandBase
 {
     #region Constructors
 
+    /// <summary>
+    ///     初始化Command
+    /// </summary>
+    /// <param name="execute"></param>
     public Command(Action execute) : this(execute, () => true)
     {
     }
 
+    /// <summary>
+    ///     初始化Command
+    /// </summary>
+    /// <param name="execute"></param>
+    /// <param name="canExecute"></param>
     public Command(Action execute, Func<bool> canExecute) : base(_ => execute(), _ => canExecute())
     {
     }
@@ -75,14 +85,27 @@ public class Command : CommandBase
     #endregion
 }
 
+/// <summary>
+///     ICommand带参数实现
+/// </summary>
+/// <typeparam name="T">参数类型</typeparam>
 public class Command<T> : CommandBase
 {
     #region Constructors
 
+    /// <summary>
+    ///     初始化Command
+    /// </summary>
+    /// <param name="execute"></param>
+    /// <param name="canExecute"></param>
     public Command(Action<T?> execute, Func<T?, bool> canExecute) : base(o => execute(o == null ? default : (T)o), o => canExecute(o == null ? default : (T)o))
     {
     }
 
+    /// <summary>
+    ///     初始化Command
+    /// </summary>
+    /// <param name="execute"></param>
     public Command(Action<T?> execute) : this(execute, _ => true)
     {
     }

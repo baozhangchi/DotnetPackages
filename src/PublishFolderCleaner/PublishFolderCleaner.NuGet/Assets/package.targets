@@ -1,0 +1,10 @@
+﻿<Project>
+  <Target Name="MoveThePublishFolderToLibFolder" AfterTargets="Publish">
+
+    <PropertyGroup>
+      <PublishFolderCleanerCommandArgs>dotnet "$(MSBuildThisFileDirectory)..\tools\$(TargetFramework)\PublishFolderCleaner.dll" -p "$(PublishDir) " -a "$(AssemblyName)" -s $(PublishSingleFile)</PublishFolderCleanerCommandArgs>
+    </PropertyGroup>
+
+    <Exec Command="$(PublishFolderCleanerCommandArgs)"></Exec>
+  </Target>
+</Project>

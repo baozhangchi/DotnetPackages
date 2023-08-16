@@ -13,7 +13,7 @@ namespace System.Collections;
 /// </summary>
 /// <typeparam name="TKey"></typeparam>
 /// <typeparam name="TValue"></typeparam>
-public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyCollectionChanged, INotifyPropertyChanged
+public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyCollectionChanged, INotifyPropertyChanged where TKey : notnull
 {
     #region Fields
 
@@ -127,14 +127,21 @@ public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INo
     }
 
     /// <inheritdoc />
-    public bool TryGetValue(TKey key, out TValue value)
+#pragma warning disable CS8767
+    public bool TryGetValue(TKey key, out TValue? value)
+#pragma warning restore CS8767
     {
+        value = default;
         var result = _dictionary.TryGetValue(key, out var item);
-        item ??= default;
-        value = item;
+        if (item != null)
+        {
+            value = item;
+        }
+
         return result;
     }
 
+    /// <inheritdoc />
     public TValue this[TKey key] { get => _dictionary[key]; set => UpdateWithNotification(key, value); }
 
     private void UpdateWithNotification(TKey key, TValue value)

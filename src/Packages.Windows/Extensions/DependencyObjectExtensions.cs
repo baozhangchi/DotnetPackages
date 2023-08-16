@@ -1,11 +1,11 @@
 ﻿#region
 
-using System.Windows;
 using System.Windows.Media;
 
 #endregion
 
-namespace Packages.Windows.Extensions;
+// ReSharper disable once CheckNamespace
+namespace System.Windows;
 
 /// <summary>
 ///     DependencyObject扩展方法
