@@ -27,19 +27,21 @@ namespace Packages.Windows.MarkupExtensions
             get => _enumType;
             set
             {
-                if (_enumType != value)
+                if (_enumType == value)
                 {
-                    if (value != null)
-                    {
-                        var enumType = Nullable.GetUnderlyingType(value) ?? value;
-                        if (!enumType.IsEnum)
-                        {
-                            throw new ArgumentException("必须是一个枚举类型");
-                        }
-                    }
-
-                    _enumType = value;
+                    return;
                 }
+
+                if (value != null)
+                {
+                    var enumType = Nullable.GetUnderlyingType(value) ?? value;
+                    if (!enumType.IsEnum)
+                    {
+                        throw new ArgumentException("必须是一个枚举类型");
+                    }
+                }
+
+                _enumType = value;
             }
         }
 

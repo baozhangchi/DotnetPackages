@@ -22,6 +22,8 @@
 	<ItemGroup>
 	  <Compile Include="..\Packages.Windows\Extensions\EnumerableExtensions.cs" Link="Extensions\EnumerableExtensions.cs" />
 	  <Compile Include="..\Packages.Windows\Extensions\EnumExtensions.cs" Link="Extensions\EnumExtensions.cs" />
+	  <Compile Include="..\Packages.Windows\HttpHelper.cs" Link="HttpHelper.cs" />
+	  <Compile Include="..\Packages.Windows\ObservableDictionary.cs" Link="ObservableDictionary.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
