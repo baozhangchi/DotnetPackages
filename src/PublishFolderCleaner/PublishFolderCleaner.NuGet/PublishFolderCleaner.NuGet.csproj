@@ -3,11 +3,11 @@
 	<PropertyGroup>
 		<!-- 发布应用用到 AppHost 不包括 .NET 45 等框架版本 -->
 		<TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
-		<Description>本工具提供 NuGet 包，可以在安装完成之后，发布应用将让发布文件夹下只包含一个 exe 和一个 lib 文件夹。此 exe 即是入口可执行文件，而 lib 文件夹就是原本的发布文件夹下的其他的文件。此工具暂不支持单文件发布</Description>
+		<Description>本工具提供 NuGet 包，可以在安装完成之后，发布应用将让发布文件夹下只包含一个 exe 和一个 lib 文件夹。此 exe 即是入口可执行文件，而 lib 文件夹就是原本的发布文件夹下的其他的文件。此工具暂不支持单文件发布，转自https://github.com/dotnet-campus/dotnetcampus.DotNETBuildSDK，因原作者的只支持net5.0，push后一直没合并，就自己开了一个</Description>
 		<PackageId>baozhangchi.PublishFolderCleaner</PackageId>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
 		<DevelopmentToolPath>..\PublishFolderCleaner\bin\$(Configuration)\</DevelopmentToolPath>
-		<Version>0.0.3</Version>
+		<Version>0.0.4</Version>
 		<Authors>baozhangchi</Authors>
 		<Company>$(Authors)</Company>
 		<Copyright>Copyright © 2023 baozhangchi, All Rights Reserved.</Copyright>
