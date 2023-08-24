@@ -1,6 +1,7 @@
 ﻿#region
 
 using System.Globalization;
+using System.IO;
 using System.Windows;
 using System.Windows.Media;
 
@@ -28,11 +29,13 @@ namespace System
         /// <param name="fontStretch"></param>
         /// <param name="fontSize"></param>
         /// <returns></returns>
-        public static Size MeasureString(this string input, Visual container, FontFamily fontFamily, FontStyle fontStyle, FontWeight fontWeight, FontStretch fontStretch, double fontSize)
+        public static Size MeasureString(this string input, Visual container, FontFamily fontFamily,
+            FontStyle fontStyle, FontWeight fontWeight, FontStretch fontStretch, double fontSize)
         {
             var formattedText = new FormattedText
             (
-                input, CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface(fontFamily, fontStyle, fontWeight, fontStretch), fontSize, Brushes.Black,
+                input, CultureInfo.CurrentUICulture, FlowDirection.LeftToRight,
+                new Typeface(fontFamily, fontStyle, fontWeight, fontStretch), fontSize, Brushes.Black,
                 VisualTreeHelper.GetDpi(container).PixelsPerDip
             );
             return new Size(formattedText.Width, formattedText.Height);
@@ -51,14 +54,27 @@ namespace System
 #if NET5_0_OR_GREATER
         [Obsolete]
 #endif
-        public static Size MeasureString(this string input, FontFamily fontFamily, FontStyle fontStyle, FontWeight fontWeight, FontStretch fontStretch, double fontSize)
+        public static Size MeasureString(this string input, FontFamily fontFamily, FontStyle fontStyle,
+            FontWeight fontWeight, FontStretch fontStretch, double fontSize)
         {
             var formattedText = new FormattedText
             (
-                input, CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface(fontFamily, fontStyle, fontWeight, fontStretch), fontSize, Brushes.Black, new NumberSubstitution(),
+                input, CultureInfo.CurrentUICulture, FlowDirection.LeftToRight,
+                new Typeface(fontFamily, fontStyle, fontWeight, fontStretch), fontSize, Brushes.Black,
+                new NumberSubstitution(),
                 TextFormattingMode.Display
             );
             return new Size(formattedText.Width, formattedText.Height);
+        }
+
+        /// <summary>
+        ///     转换成DirectoryInfo
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static DirectoryInfo AsDirectoryInfo(this string path)
+        {
+            return new DirectoryInfo(path);
         }
 
         #endregion

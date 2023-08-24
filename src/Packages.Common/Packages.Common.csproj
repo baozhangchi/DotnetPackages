@@ -15,19 +15,26 @@
 		<RepositoryType>git</RepositoryType>
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
-		<Version>0.0.0.1</Version>
+		<Version>0.0.1</Version>
 		<ImplicitUsings>disable</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <Compile Include="..\Packages.Windows\Extensions\EnumerableExtensions.cs" Link="Extensions\EnumerableExtensions.cs" />
 	  <Compile Include="..\Packages.Windows\Extensions\EnumExtensions.cs" Link="Extensions\EnumExtensions.cs" />
+	  <Compile Include="..\Packages.Windows\Extensions\IOExtensions.cs" Link="Extensions\IOExtensions.cs" />
 	  <Compile Include="..\Packages.Windows\HttpHelper.cs" Link="HttpHelper.cs" />
 	  <Compile Include="..\Packages.Windows\ObservableDictionary.cs" Link="ObservableDictionary.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="Extensions\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="README.md">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

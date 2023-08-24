@@ -20,3 +20,4 @@
     6. `Command`：`ICommand`的一个实现
     7. `HttpHelper`：`Http`相关常用方法
     8. `ObservableDictionary`: 支持`INotifyCollectionChanged`和`INotifyPropertyChanged`接口的字典类
+    9. `PropertyChangedBase`： 支持`INotifyPropertyChanging`和`INotifyPropertyChanged`接口的基类
