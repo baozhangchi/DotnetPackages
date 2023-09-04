@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
@@ -10,7 +10,7 @@
 		<Authors>baozhangchi</Authors>
 		<PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
 		<Copyright>Copyright © 2023 baozhangchi, All Rights Reserved.</Copyright>
-		<Description>本Nuget包提供了一些常用的类库</Description>
+		<Description>本Nuget包提供了一些Avalonia常用的类库</Description>
 		<RepositoryUrl>https://github.com/baozhangchi/DotnetPackages</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<FileVersion>$(Version)</FileVersion>
@@ -20,17 +20,21 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Include="..\Packages.Windows\Extensions\EnumerableExtensions.cs" Link="Extensions\EnumerableExtensions.cs" />
-	  <Compile Include="..\Packages.Windows\Extensions\EnumExtensions.cs" Link="Extensions\EnumExtensions.cs" />
-	  <Compile Include="..\Packages.Windows\Extensions\IOExtensions.cs" Link="Extensions\IOExtensions.cs" />
-	  <Compile Include="..\Packages.Windows\HttpHelper.cs" Link="HttpHelper.cs" />
-	  <Compile Include="..\Packages.Windows\ObservableDictionary.cs" Link="ObservableDictionary.cs" />
+		<Compile Include="..\Packages.Windows\Extensions\EnumerableExtensions.cs" Link="Extensions\EnumerableExtensions.cs" />
+		<Compile Include="..\Packages.Windows\Extensions\EnumExtensions.cs" Link="Extensions\EnumExtensions.cs" />
+		<Compile Include="..\Packages.Windows\Extensions\IOExtensions.cs" Link="Extensions\IOExtensions.cs" />
+		<Compile Include="..\Packages.Windows\HttpHelper.cs" Link="HttpHelper.cs" />
+		<Compile Include="..\Packages.Windows\ObservableDictionary.cs" Link="ObservableDictionary.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="README.md">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </None>
+	  <PackageReference Include="Avalonia" Version="11.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="README.md">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>
