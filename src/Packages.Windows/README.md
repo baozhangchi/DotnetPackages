@@ -21,3 +21,4 @@
     7. `HttpHelper`：`Http`相关常用方法
     8. `ObservableDictionary`: 支持`INotifyCollectionChanged`和`INotifyPropertyChanged`接口的字典类
     9. `PropertyChangedBase`： 支持`INotifyPropertyChanging`和`INotifyPropertyChanged`接口的基类
+    4. `IDCardNoHelper`：身份证号码相关

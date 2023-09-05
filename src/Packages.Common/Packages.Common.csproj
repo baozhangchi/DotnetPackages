@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
-		<Version>0.0.1</Version>
+		<Version>0.0.2</Version>
 		<ImplicitUsings>disable</ImplicitUsings>
 	</PropertyGroup>
 
@@ -24,13 +24,28 @@
 	  <Compile Include="..\Packages.Windows\Extensions\EnumExtensions.cs" Link="Extensions\EnumExtensions.cs" />
 	  <Compile Include="..\Packages.Windows\Extensions\IOExtensions.cs" Link="Extensions\IOExtensions.cs" />
 	  <Compile Include="..\Packages.Windows\HttpHelper.cs" Link="HttpHelper.cs" />
+	  <Compile Include="..\Packages.Windows\IDCardNoHelper.cs" Link="IDCardNoHelper.cs" />
 	  <Compile Include="..\Packages.Windows\ObservableDictionary.cs" Link="ObservableDictionary.cs" />
+	  <Compile Include="..\Packages.Windows\Properties\Resources.Designer.cs" Link="Properties\Resources.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="..\Packages.Windows\Properties\Resources.resx" Link="Properties\Resources.resx" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <None Update="README.md">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	  <Folder Include="Resources\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\Packages.Windows\Resources\行政区划代码.csv" Link="Resources\行政区划代码.csv" />
 	</ItemGroup>
 
 </Project>
