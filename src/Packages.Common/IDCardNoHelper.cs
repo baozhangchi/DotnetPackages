@@ -29,7 +29,7 @@ namespace System
         static IDCardNoHelper()
         {
             AreaCodeItems = new List<AreaCodeItem>();
-            var content = Packages.Windows.Properties.Resources.行政区划代码;
+            var content = Packages.Common.Properties.Resources.行政区划代码;
             var index = 0;
             foreach (var line in content.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
             {

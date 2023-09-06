@@ -26,15 +26,8 @@
 		<Compile Include="..\Packages.Windows\HttpHelper.cs" Link="HttpHelper.cs" />
 		<Compile Include="..\Packages.Windows\ObservableDictionary.cs" Link="ObservableDictionary.cs" />
 	</ItemGroup>
-
 	<ItemGroup>
-	  <PackageReference Include="Avalonia" Version="11.0.4" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="README.md">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</None>
+		<PackageReference Include="Avalonia" Version="11.0.4" />
 	</ItemGroup>
 
 </Project>

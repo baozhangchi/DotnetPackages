@@ -1,14 +1,12 @@
 ﻿#region
 
-using System.Net;
-using System.Net.Http;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
 #endregion
 
-namespace Packages.Windows
+namespace System.Net.Http
 {
     /// <summary>
     ///     Http相关帮助类

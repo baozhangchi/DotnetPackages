@@ -18,6 +18,13 @@
 		<Version>0.0.10</Version>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<Compile Include="..\Packages.Common\Extensions\EnumerableExtensions.cs" Link="Extensions\EnumerableExtensions.cs" />
+		<Compile Include="..\Packages.Common\Extensions\EnumExtensions.cs" Link="Extensions\EnumExtensions.cs" />
+		<Compile Include="..\Packages.Common\Extensions\IOExtensions.cs" Link="Extensions\IOExtensions.cs" />
+		<Compile Include="..\Packages.Common\HttpHelper.cs" Link="HttpHelper.cs" />
+		<Compile Include="..\Packages.Common\ObservableDictionary.cs" Link="ObservableDictionary.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="MarkupExtensions\" />
@@ -26,23 +33,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" Condition="'$(TargetFramework)'=='net452'" />
-	  <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
-	  <PackageReference Include="Vanara.PInvoke.User32" Version="3.4.16" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Properties\Resources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Resources.resx</DependentUpon>
-	  </Compile>
+		<PackageReference Include="Microsoft.Net.Http" Version="2.2.29" Condition="'$(TargetFramework)'=='net452'" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Update="Properties\Resources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
 </Project>

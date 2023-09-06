@@ -18,8 +18,18 @@ namespace Packages.Windows.Converters
         /// <summary>
         ///     默认实例
         /// </summary>
-        public static CommandParametersToTupleConverter Instance =>
-            _instance ?? (_instance = new CommandParametersToTupleConverter());
+        public static CommandParametersToTupleConverter Instance
+        {
+            get
+            {
+                if (_instance != null)
+                {
+                    return _instance;
+                }
+
+                return _instance = new CommandParametersToTupleConverter();
+            }
+        }
 
         /// <inheritdoc />
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
@@ -29,12 +39,9 @@ namespace Packages.Windows.Converters
                 var methods = typeof(Tuple).GetMethods(BindingFlags.Public | BindingFlags.Static)
                     .Where(x => x.Name == "Create").ToList();
                 var method = methods.FirstOrDefault(x => x.GetParameters().Length == values.Length);
-                if (method != null)
-                {
-                    return method.MakeGenericMethod(values.Select(x => x.GetType()).ToArray()).Invoke(null, values);
-                }
-
-                return null;
+                return method != null
+                    ? method.MakeGenericMethod(values.Select(x => x.GetType()).ToArray()).Invoke(null, values)
+                    : null;
             }
 
             return null;
