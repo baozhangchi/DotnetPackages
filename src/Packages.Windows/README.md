@@ -18,4 +18,8 @@
         1. `EnumBindingSourceExtension`：把一个枚举类型转化成对应的数据源
     5. `TypeConverters`：常用的类型转换
     6. `Command`：`ICommand`的一个实现
+    2. `HttpHelper`：`Http`相关常用方法
+    2. `DpiUtils`：`Dpi`相关常用方法
+    3. `ObservableDictionary`: 支持`INotifyCollectionChanged`和`INotifyPropertyChanged`接口的字典类
     9. `PropertyChangedBase`： 支持`INotifyPropertyChanging`和`INotifyPropertyChanged`接口的基类
+    10. `Controls`：自定义控件
