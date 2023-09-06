@@ -23,6 +23,7 @@
 		<Compile Include="..\Packages.Windows\Extensions\EnumerableExtensions.cs" Link="Extensions\EnumerableExtensions.cs" />
 		<Compile Include="..\Packages.Windows\Extensions\EnumExtensions.cs" Link="Extensions\EnumExtensions.cs" />
 		<Compile Include="..\Packages.Windows\Extensions\IOExtensions.cs" Link="Extensions\IOExtensions.cs" />
+		<Compile Include="..\Packages.Windows\Extensions\XmlHelper.cs" Link="Extensions\XmlHelper.cs" />
 		<Compile Include="..\Packages.Windows\HttpHelper.cs" Link="HttpHelper.cs" />
 		<Compile Include="..\Packages.Windows\ObservableDictionary.cs" Link="ObservableDictionary.cs" />
 	</ItemGroup>

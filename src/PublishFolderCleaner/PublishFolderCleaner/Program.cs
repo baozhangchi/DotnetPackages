@@ -6,6 +6,7 @@ using dotnetCampus.Cli;
 #endregion
 
 namespace PublishFolderCleaner
+
 {
     internal class Program
     {
@@ -14,12 +15,22 @@ namespace PublishFolderCleaner
         private static void Main(string[] args)
         {
             var options = CommandLine.Parse(args).As<Options>();
-            if (options.PublishSingleFile) return;
+
+            // 如果是单文件发布，则直接返回
+            if (options.PublishSingleFile)
+            {
+                return;
+            }
+
             const string libFolderName = "lib";
             var publishFolder = options.PublishFolder.Trim();
             var libFolder = Path.GetFullPath(Path.Combine(publishFolder, libFolderName));
             var tempFolder = Path.GetFullPath(Path.Combine(publishFolder, @"..", Path.GetRandomFileName()));
-            if (Directory.Exists(libFolder)) Directory.Delete(libFolder, true);
+            if (Directory.Exists(libFolder))
+            {
+                Directory.Delete(libFolder, true);
+            }
+
             Directory.Move(publishFolder, tempFolder);
             Directory.CreateDirectory(publishFolder);
             Directory.Move(tempFolder, libFolder);

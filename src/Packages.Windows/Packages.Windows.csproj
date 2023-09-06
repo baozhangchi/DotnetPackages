@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
-		<Version>0.0.10</Version>
+		<Version>0.0.11</Version>
 	</PropertyGroup>
 
 
