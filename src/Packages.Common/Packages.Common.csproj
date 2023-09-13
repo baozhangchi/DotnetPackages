@@ -20,6 +20,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Include="..\Packages.Windows\Extensions\DateTimeExtensions.cs" Link="Extensions\DateTimeExtensions.cs" />
 	  <Compile Include="..\Packages.Windows\Extensions\EnumerableExtensions.cs" Link="Extensions\EnumerableExtensions.cs" />
 	  <Compile Include="..\Packages.Windows\Extensions\EnumExtensions.cs" Link="Extensions\EnumExtensions.cs" />
 	  <Compile Include="..\Packages.Windows\Extensions\IOExtensions.cs" Link="Extensions\IOExtensions.cs" />

@@ -99,8 +99,12 @@ namespace System
         ///     生成身份证号码
         /// </summary>
         /// <param name="areaCode">行政区划代码</param>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <param name="day"></param>
         /// <returns></returns>
-        public static string GenerateIdCardNo(string areaCode = null)
+        public static string GenerateIdCardNo(string areaCode = null, int? year = null, int? month = null,
+            int? day = null)
         {
             if (string.IsNullOrWhiteSpace(areaCode) || areaCode.Length != 6 ||
                 !AreaCodeItems.Any(x => x.Code.Equals(areaCode)))
@@ -108,10 +112,69 @@ namespace System
                 areaCode = AreaCodeItems[Random.Next(0, AreaCodeItems.Count)].Code;
             }
 
-            var year = Random.Next(_startYear, _endYear + 1);
-            var month = Random.Next(1, 13);
-            var day = new[] { 1, 3, 5, 7, 8, 10, 12 }.Contains(month) ? Random.Next(1, 32) :
-                new[] { 4, 6, 9, 11 }.Contains(month) ? Random.Next(1, 31) : Random.Next(1, 29);
+            if (!year.HasValue)
+            {
+                year = Random.Next(_startYear, _endYear + 1);
+            }
+
+            if (!month.HasValue)
+            {
+                month = Random.Next(1, 13);
+            }
+
+            if (!day.HasValue)
+            {
+                day = new[] { 1, 3, 5, 7, 8, 10, 12 }.Contains(month.Value) ? Random.Next(1, 32) :
+                    new[] { 4, 6, 9, 11 }.Contains(month.Value) ? Random.Next(1, 31) : Random.Next(1, 29);
+            }
+
+            if (year > DateTime.Today.Year || year <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(year), year, @"年份的最大值不能超过今年年份，最小值必须大于0");
+            }
+
+            if (month <= 0 || month > 12)
+            {
+                throw new ArgumentOutOfRangeException(nameof(month), month, @"月份必须在1到12之间");
+            }
+
+            if (day <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(day), day, @"日期必须大于0");
+            }
+
+            if (new[] { 1, 3, 5, 7, 8, 10, 12 }.Contains(month.Value))
+            {
+                if (day > 31)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(day), day, @"对应月份日期不能超过31");
+                }
+            }
+            else if (new[] { 4, 6, 9, 11 }.Contains(month.Value))
+            {
+                if (day > 30)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(day), day, @"对应月份日期不能超过30");
+                }
+            }
+            else
+            {
+                if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+                {
+                    if (day > 29)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(day), day, @"对应年份2月份日期不能超过29");
+                    }
+                }
+                else
+                {
+                    if (day > 28)
+                    {
+                        throw new ArgumentOutOfRangeException(nameof(day), day, @"对应年份2月份日期不能超过28");
+                    }
+                }
+            }
+
             return CalculateIdCardNo($"{areaCode}{year:0000}{month:00}{day:00}{Random.Next(100, 1000):000}");
         }
 
