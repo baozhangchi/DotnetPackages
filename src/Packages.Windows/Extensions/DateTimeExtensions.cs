@@ -16,8 +16,8 @@ namespace System
         private const string DI_ZHI = "子丑寅卯辰巳午未申酉戌亥";
         private const string CHINESE_ZODIAC = "鼠牛虎兔龙蛇马羊猴鸡狗猪";
         private const string CM = "一二三四五六七八九十冬腊";
-        private static readonly ChineseLunisolarCalendar ChineseLunisolarCalendar = new ChineseLunisolarCalendar();
-        private static readonly List<string> DayList = new List<string>();
+        private static readonly ChineseLunisolarCalendar ChineseLunisolarCalendar = new();
+        private static readonly List<string> DayList = new();
 
         static DateTimeExtensions()
         {
@@ -53,12 +53,12 @@ namespace System
         }
 
         /// <summary>
-        ///     公历转农历
+        ///     公历转农历字符串
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static string ConvertToLunarDate(this DateTime date)
+        public static string ToLunarString(this DateTime date)
         {
             if (date > ChineseLunisolarCalendar.MaxSupportedDateTime ||
                 date < ChineseLunisolarCalendar.MinSupportedDateTime)
@@ -81,6 +81,31 @@ namespace System
                 ? $"{TIAN_GAN[tg - 1]}{DI_ZHI[dz - 1]}年闰{CM[month - 1]}月{DayList[day - 1]}"
                 : $"{TIAN_GAN[tg - 1]}{DI_ZHI[dz - 1]}年{CM[month - 1]}月{DayList[day - 1]}";
             return str;
+        }
+
+        /// <summary>
+        /// 公历转农历
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static DateTime ToLunarDate(this DateTime date)
+        {
+            if (date > ChineseLunisolarCalendar.MaxSupportedDateTime ||
+                date < ChineseLunisolarCalendar.MinSupportedDateTime)
+            {
+                //日期范围：1901 年 2 月 19 日 - 2101 年 1 月 28 日
+                throw new Exception(
+                    $"日期超出范围！必须在{ChineseLunisolarCalendar.MinSupportedDateTime:yyyy-MM-dd}到{ChineseLunisolarCalendar.MaxSupportedDateTime:yyyy-MM-dd}之间！");
+            }
+
+            var year = ChineseLunisolarCalendar.GetYear(date);
+            var flag = ChineseLunisolarCalendar.GetLeapMonth(year);
+            var month = flag > 0
+                ? ChineseLunisolarCalendar.GetMonth(date) - 1
+                : ChineseLunisolarCalendar.GetMonth(date);
+            var day = ChineseLunisolarCalendar.GetDayOfMonth(date);
+            return new DateTime(year, month, day);
         }
 
         /// <summary>
