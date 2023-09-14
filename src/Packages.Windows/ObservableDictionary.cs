@@ -15,7 +15,8 @@ namespace System.Collections
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
-    public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyCollectionChanged, INotifyPropertyChanged
+    public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyCollectionChanged,
+        INotifyPropertyChanged
     {
         #region Fields
 
@@ -135,7 +136,11 @@ namespace System.Collections
         }
 
         /// <inheritdoc />
-        public TValue this[TKey key] { get => _dictionary[key]; set => UpdateWithNotification(key, value); }
+        public TValue this[TKey key]
+        {
+            get => _dictionary[key];
+            set => UpdateWithNotification(key, value);
+        }
 
         private void UpdateWithNotification(TKey key, TValue value)
         {
@@ -148,21 +153,25 @@ namespace System.Collections
                     CollectionChanged?.Invoke
                     (
                         this,
-                        new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, new KeyValuePair<TKey, TValue>(key, value), new KeyValuePair<TKey, TValue>(key, oldValue), index)
+                        new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace,
+                            new KeyValuePair<TKey, TValue>(key, value), new KeyValuePair<TKey, TValue>(key, oldValue),
+                            index)
                     );
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Values)));
                 }
-                else
-                {
-                    AddWithNotification(key, value);
-                }
+            }
+            else
+            {
+                AddWithNotification(key, value);
             }
         }
 
         private void AddWithNotification(TKey key, TValue value)
         {
             _dictionary.Add(key, value);
-            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, new KeyValuePair<TKey, TValue>(key, value)));
+            CollectionChanged?.Invoke(this,
+                new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add,
+                    new KeyValuePair<TKey, TValue>(key, value)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Count)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Keys)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Values)));
@@ -175,7 +184,9 @@ namespace System.Collections
                 var index = Keys.ToList().IndexOf(key);
                 if (_dictionary.Remove(key))
                 {
-                    CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, new KeyValuePair<TKey, TValue>(key, value), index));
+                    CollectionChanged?.Invoke(this,
+                        new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove,
+                            new KeyValuePair<TKey, TValue>(key, value), index));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Count)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Keys)));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Values)));
