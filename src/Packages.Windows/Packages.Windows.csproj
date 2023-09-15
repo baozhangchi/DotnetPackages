@@ -16,6 +16,7 @@
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<Version>0.0.11</Version>
+		<Nullable>disable</Nullable>
 	</PropertyGroup>
 
 

@@ -16,8 +16,8 @@ namespace System
         private const string DI_ZHI = "子丑寅卯辰巳午未申酉戌亥";
         private const string CHINESE_ZODIAC = "鼠牛虎兔龙蛇马羊猴鸡狗猪";
         private const string CM = "一二三四五六七八九十冬腊";
-        private static readonly ChineseLunisolarCalendar ChineseLunisolarCalendar = new();
-        private static readonly List<string> DayList = new();
+        private static readonly ChineseLunisolarCalendar ChineseLunisolarCalendar = new ChineseLunisolarCalendar();
+        private static readonly List<string> DayList = new List<string>();
 
         static DateTimeExtensions()
         {

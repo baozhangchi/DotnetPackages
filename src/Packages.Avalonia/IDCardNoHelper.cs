@@ -12,7 +12,7 @@ namespace System
     ///     身份证号码相关
     /// </summary>
     // ReSharper disable once InconsistentNaming
-    public class IDCardNoHelper
+    public static class IDCardNoHelper
     {
         private static readonly List<AreaCodeItem> AreaCodeItems;
         private static readonly Random Random;
