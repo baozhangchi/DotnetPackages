@@ -73,18 +73,20 @@ namespace System
             var tg = ChineseLunisolarCalendar.GetCelestialStem(yearIndex);
             var dz = ChineseLunisolarCalendar.GetTerrestrialBranch(yearIndex);
             var flag = ChineseLunisolarCalendar.GetLeapMonth(year);
+            var originMonth = ChineseLunisolarCalendar.GetMonth(date);
             var month = flag > 0
                 ? ChineseLunisolarCalendar.GetMonth(date) - 1
                 : ChineseLunisolarCalendar.GetMonth(date);
+            var isLeap = flag == originMonth;
             var day = ChineseLunisolarCalendar.GetDayOfMonth(date);
-            var str = flag > 0
+            var str = isLeap
                 ? $"{TIAN_GAN[tg - 1]}{DI_ZHI[dz - 1]}年闰{CM[month - 1]}月{DayList[day - 1]}"
                 : $"{TIAN_GAN[tg - 1]}{DI_ZHI[dz - 1]}年{CM[month - 1]}月{DayList[day - 1]}";
             return str;
         }
 
         /// <summary>
-        /// 公历转农历
+        ///     公历转农历
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
