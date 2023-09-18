@@ -72,12 +72,12 @@ namespace System
             var yearIndex = ChineseLunisolarCalendar.GetSexagenaryYear(date);
             var tg = ChineseLunisolarCalendar.GetCelestialStem(yearIndex);
             var dz = ChineseLunisolarCalendar.GetTerrestrialBranch(yearIndex);
-            var flag = ChineseLunisolarCalendar.GetLeapMonth(year);
+            var leapMonth = ChineseLunisolarCalendar.GetLeapMonth(year);
             var originMonth = ChineseLunisolarCalendar.GetMonth(date);
-            var month = flag > 0
+            var month = leapMonth <= originMonth
                 ? ChineseLunisolarCalendar.GetMonth(date) - 1
                 : ChineseLunisolarCalendar.GetMonth(date);
-            var isLeap = flag == originMonth;
+            var isLeap = leapMonth == originMonth;
             var day = ChineseLunisolarCalendar.GetDayOfMonth(date);
             var str = isLeap
                 ? $"{TIAN_GAN[tg - 1]}{DI_ZHI[dz - 1]}年闰{CM[month - 1]}月{DayList[day - 1]}"
@@ -102,10 +102,11 @@ namespace System
             }
 
             var year = ChineseLunisolarCalendar.GetYear(date);
-            var flag = ChineseLunisolarCalendar.GetLeapMonth(year);
-            var month = flag > 0
-                ? ChineseLunisolarCalendar.GetMonth(date) - 1
-                : ChineseLunisolarCalendar.GetMonth(date);
+            var originMonth = ChineseLunisolarCalendar.GetMonth(date);
+            var leapMonth = ChineseLunisolarCalendar.GetLeapMonth(year);
+            var month = leapMonth > originMonth
+                ? originMonth - 1
+                : originMonth;
             var day = ChineseLunisolarCalendar.GetDayOfMonth(date);
             return new DateTime(year, month, day);
         }

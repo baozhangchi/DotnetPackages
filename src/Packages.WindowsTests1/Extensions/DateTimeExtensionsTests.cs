@@ -14,6 +14,7 @@ namespace System.Tests
         {
             Assert.IsNotEmpty(DateTime.Today.ToLunarString());
             Assert.IsNotEmpty(new DateTime(2023, 3, 23).ToLunarString());
+            Assert.IsNotEmpty(new DateTime(2023, 3, 20).ToLunarString());
         }
     }
 }

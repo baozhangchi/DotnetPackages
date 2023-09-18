@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<FileVersion>$(Version)</FileVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
-		<Version>0.0.9</Version>
+		<Version>0.0.10</Version>
 		<ImplicitUsings>disable</ImplicitUsings>
 	</PropertyGroup>
 
@@ -32,7 +32,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.0.4" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Properties\Resources.Designer.cs">
